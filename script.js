@@ -1,13 +1,16 @@
 let humanScore = 0;
 let computerScore = 0;
 let roundsPlayed = 0;
-const num = prompt("How many rounds?");
+const num = parseInt(prompt("How many rounds?"));
+
 // query selector
 let rock = document.querySelector(".rock");
 let paper = document.querySelector(".paper");
 let scissors = document.querySelector(".scissors");
 let hScore = document.querySelector(".hscore");
 let cScore = document.querySelector(".cscore");
+let winnerText = document.querySelector(".question");
+let win = document.querySelector(".win");
 
 // eventlistener
 rock.addEventListener('click', () => { playRound("rock") })
@@ -26,35 +29,54 @@ function getComputerChoice() {
 }
 
 function playRound(choice) {
-    game();
+    if (roundsPlayed >= num) {
+        return;
+    }
+
     let cChoice = getComputerChoice();
     if (choice === cChoice) {
         console.log("It's a draw!");
+        win.textContent = "This round is a draw";
     } else if (choice === "rock" && cChoice === "scissors") {
         console.log("Human wins");
+        win.textContent = "Human wins this round";
         humanScore++;
     } else if (choice === "paper" && cChoice === "rock") {
-        console.log("Human wins");
+        win.textContent = "Human wins this round";
         humanScore++;
     } else if (choice === "scissors" && cChoice === "paper") {
+        win.textContent = "Human wins this round";
         console.log("Human wins");
         humanScore++;
     } else {
+        win.textContent = "computer wins this round";
         console.log("Computer wins!");
         computerScore++;
     }
-    logScore();
-    return;
-}
 
-function logScore(){
-    hScore.textContent = humanScore; 
-    cScore.textContent = computerScore;
-}
-
-
-function game() {
-    if(roundsPlayed == num) {console.log("Game Over!"); return;}
     roundsPlayed++;
-    console.log(`human score: ${humanScore} computer score: ${computerScore}`)
+    logScore();
+
+    if (roundsPlayed === num) {
+        declareWinner();
+    }
+}
+
+function logScore() {
+    hScore.textContent = "Human Score: " + humanScore;
+    cScore.textContent = "Computer Score: " + computerScore;
+}
+
+function declareWinner() {
+    if (humanScore > computerScore) {
+        winnerText.textContent = "You Win!";
+    } else if (computerScore > humanScore) {
+        winnerText.textContent = "You Lost!";
+    } else {
+        winnerText.textContent = "Its a draw!";
+    }
+
+    document.querySelector(".win").style.display = "none";
+    document.querySelector(".choices").style.display = "none";
+
 }

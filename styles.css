@@ -23,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid green;
+    /* border: 2px solid green; */
 }
 
 .middle {
@@ -37,15 +37,16 @@ body {
 
 .score {
     display: flex;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .display {
     display: flex;
     justify-content: space-around;
+    gap: 16px;
 }
 
 .screen {
@@ -65,6 +66,11 @@ body {
     gap: 20px;
 }
 
+.win {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .footer {
     display: flex;
     justify-content: center;
