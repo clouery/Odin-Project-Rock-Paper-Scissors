@@ -29,7 +29,7 @@ body {
 .middle {
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     margin-bottom: auto;
     margin-top: 20px;
@@ -71,6 +71,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .footer {
     display: flex;
     justify-content: center;
@@ -79,4 +80,25 @@ body {
 img {
     max-width: 200px;
     max-height: 200px;
+}
+
+.match {
+    display: flex;
+    /* border: 2px solid red; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.rounds {
+    display: flex;
+    gap: 16px;
+    font-size: 36px;
+}
+
+.match button {
+    padding: 20px;
+    font-size: 20px;
+    margin-top: 20px;
 }
